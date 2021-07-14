@@ -36,7 +36,7 @@
   },
   "proxy": "http://localhost:5000/",
   "lint-staged": {
-    "src/**/*": [
+    "src/**/*.{ts,tsx,js}": [
       "yarn lint --fix"
     ]
   },
