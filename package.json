@@ -34,6 +34,7 @@
     "lint": "eslint src --max-warnings=0",
     "prepare": "husky install"
   },
+  "proxy": "http://localhost:5000/",
   "lint-staged": {
     "src/**/*": [
       "yarn lint --fix"

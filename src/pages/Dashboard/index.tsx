@@ -170,7 +170,7 @@ const Dashboard: React.FC = () => {
             setListClients([...updateListUser])
             setShowModal(false)
             formRef.current?.reset()
-            cogoToast.success('Usuário editado com sucesso', { hideAfter: 5 })
+            cogoToast.success('Cliente editado com sucesso', { hideAfter: 5 })
         } catch (error) {
             cogoToast.error(error.response.data.message, { hideAfter: 5 })
         }
@@ -192,7 +192,6 @@ const Dashboard: React.FC = () => {
     }
 
     function handleEdit(user: ClientProps): void {
-        console.log(user)
         formRef.current?.setData({
             nome: user.nome,
             cpf: user.cpf,
@@ -233,7 +232,6 @@ const Dashboard: React.FC = () => {
         const response = await axios.get(
             `https://viacep.com.br/ws/${e.target.value}/json/`
         )
-        console.log(formRef.current)
         formRef.current?.setFieldValue('endereco.rua', response.data.logradouro)
         formRef.current?.setFieldValue('endereco.bairro', response.data.bairro)
         formRef.current?.setFieldValue(
@@ -250,6 +248,8 @@ const Dashboard: React.FC = () => {
         formRef.current?.reset()
         setModalTitle('Adicionar cliente')
         setShowModal(true)
+        const nomeInput = formRef.current?.getFieldRef('nome')
+        nomeInput.focus()
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

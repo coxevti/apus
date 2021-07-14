@@ -14,6 +14,16 @@ export const Wrapper = styled.table`
         text-align: left;
         font-weight: 500;
     }
+    th.ascending::after {
+        content: '⬇';
+        display: inline-block;
+        margin-left: 1em;
+    }
+    th.descending::after {
+        content: '⬆';
+        display: inline-block;
+        margin-left: 1em;
+    }
     thead {
         tr {
             height: 30px;

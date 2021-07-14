@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Wrapper } from 'components/Table/styles'
+import { useSortableData } from './SortableData'
 
 function objectValues<T extends {}>(obj: T) {
     return Object.keys(obj).map((objKey) => obj[objKey as keyof T])
@@ -47,6 +48,15 @@ export default function Table<T extends MinTableItem>({
     headersHide = ['id'],
     customRenderers
 }: TableProps<T>): JSX.Element {
+    const {
+        items: itemsSortableData,
+        requestSort,
+        sortConfig
+    } = useSortableData(items, {
+        key: 'nome',
+        direction: 'ascending'
+    })
+
     function renderRow(item: T): JSX.Element {
         return (
             <tr key={Math.random()}>
@@ -69,6 +79,12 @@ export default function Table<T extends MinTableItem>({
             </tr>
         )
     }
+
+    const getClassNamesFor = (name: string) => {
+        if (!sortConfig) return
+        return sortConfig.key === name ? sortConfig.direction : undefined
+    }
+
     return (
         <Wrapper>
             <thead>
@@ -76,11 +92,23 @@ export default function Table<T extends MinTableItem>({
                     {objectValues(headers).map((headerValue) => {
                         if (headersHide?.includes(headerValue.toLowerCase()))
                             return null
-                        return <th key={headerValue}>{headerValue}</th>
+                        return (
+                            <th
+                                key={headerValue}
+                                onClick={() =>
+                                    requestSort(headerValue.toLocaleLowerCase())
+                                }
+                                className={getClassNamesFor(
+                                    headerValue.toLocaleLowerCase()
+                                )}
+                            >
+                                {headerValue}
+                            </th>
+                        )
                     })}
                 </tr>
             </thead>
-            <tbody>{items.map(renderRow)}</tbody>
+            <tbody>{itemsSortableData.map(renderRow)}</tbody>
         </Wrapper>
     )
 }
