@@ -1,0 +1,17 @@
+{
+  "clientes": [
+    {
+      "nome": "Caitlyn Kerluke",
+      "cpf": "808.832.080-16",
+      "email": "foo_bar@email.com",
+      "endereco": {
+        "cep": "13454000",
+        "numero": "888",
+        "rua": "rua talvez",
+        "bairro": "bairro azul",
+        "cidade": "cidade eterna"
+      },
+      "id": 1
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "users": [
+        {
+            "id": 1,
+	    "name": "Valdir Coxev",
+            "email": "teste@emaill.com.br",
+            "password": "87654321",
+	    "avatar": "https://avatars.githubusercontent.com/u/46493873?v=4"
+        }
+    ]
+}
