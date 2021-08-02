@@ -246,6 +246,7 @@ const Dashboard: React.FC = () => {
 
     const handleModalShowNew = () => {
         formRef.current?.reset()
+        setIdEditClient('')
         setModalTitle('Adicionar cliente')
         setShowModal(true)
         const nomeInput = formRef.current?.getFieldRef('nome')
